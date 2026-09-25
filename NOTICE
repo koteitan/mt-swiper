@@ -1,0 +1,19 @@
+mt-swiper
+
+wmwy.js is a JavaScript translation of the following files of
+
+  Phyrion, omega-Y-Well-Ordering-Lean
+  https://github.com/Phyrion1343/omega-Y-Well-Ordering-Lean
+  revision 33c16a8ce8f7e01bb3794881f3ff9109474beaed
+
+    OmegaY/Rows.lean              (jump, bump, B and the row order)
+    OmegaY/Canonical/Build.lean   (the mountain, `build`)
+    OmegaY/Expansion/Build.lean   (the expansion, `expand`)
+
+which are licensed under the Apache License, Version 2.0 (see LICENSE-APACHE).
+The translation was made by koteitan in 2026 from the copies of these files in
+https://github.com/koteitan/wmwy-wo-por (unchanged apart from a header line).
+Changes: translated from Lean 4 to JavaScript; the Lean error values are thrown
+as exceptions; a row is an array of coefficients; the proofs are not
+translated; `badRoot` is added for the display. wmwy.js itself is distributed
+under the Apache License, Version 2.0.

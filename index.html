@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1a1a">
+  <title>mt-swiper</title>
+  <script>
+    //apply the saved theme before the first paint
+    try{
+      var t=JSON.parse(localStorage.getItem("mt-swiper:state")||"{}").theme;
+      if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);
+    }catch(e){
+    }
+  </script>
+  <link rel="stylesheet" href="style.css?v=0.1.0">
+  <script src="./yny.js?v=0.1.0"></script>
+  <script src="./omegay.js?v=0.1.0"></script>
+  <script src="./wmwy.js?v=0.1.0"></script>
+  <script src="./system.js?v=0.1.0"></script>
+  <script src="./draw.js?v=0.1.0"></script>
+  <script src="./script.js?v=0.1.0"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>mt-swiper <span class="sys-label" id="sys-label">1-Y</span></h1>
+    <div class="header-right">
+      <div class="level" aria-label="level">
+        <button type="button" class="level-button" id="level-minus" aria-label="lower the level">-</button>
+        <span class="level-value" id="level-value">3</span>
+        <button type="button" class="level-button" id="level-plus" aria-label="raise the level">+</button>
+      </div>
+      <button type="button" class="menu-button" id="menu-button" aria-label="menu" aria-expanded="false" aria-controls="menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </button>
+    </div>
+    <div class="menu" id="menu" hidden>
+      <fieldset>
+        <legend>theme</legend>
+        <label><input type="radio" name="theme" value="system"> system</label>
+        <label><input type="radio" name="theme" value="light"> light</label>
+        <label><input type="radio" name="theme" value="dark"> dark</label>
+      </fieldset>
+      <fieldset>
+        <legend>sequence</legend>
+        <label><input type="radio" name="sys" value="1y"> 1-Y</label>
+        <label><input type="radio" name="sys" value="wy"> ω-Y</label>
+        <label><input type="radio" name="sys" value="wmwy"> weak-magma ω-Y</label>
+      </fieldset>
+      <div class="credits">
+        <div><a href="https://googology.fandom.com/ja/wiki/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%96%E3%83%AD%E3%82%B0:%E3%82%86%E3%81%8D%E3%81%A8/Y%E6%95%B0%E5%88%97" target="_blank" rel="noopener">Y数列</a>: ゆきと</div>
+        <div><a href="https://naruyoko.github.io/googology/YNySequence/" target="_blank" rel="noopener">YNySequence</a>,
+          <a href="https://naruyoko.github.io/googology/StudyAndExpandSequence/" target="_blank" rel="noopener">StudyAndExpandSequence</a>,
+          <a href="https://naruyoko.github.io/googology/MEGAwhYmountain/" target="_blank" rel="noopener">MEGAwhYmountain</a>: Naruyoko (used with permission)</div>
+        <div>weak-magma ω-Y: <a href="https://github.com/Phyrion1343/omega-Y-Well-Ordering-Lean" target="_blank" rel="noopener">Phyrion, omega-Y-Well-Ordering-Lean</a> (Apache-2.0)</div>
+        <div><a href="https://github.com/koteitan/mt-swiper/blob/main/THIRD-PARTY.md" target="_blank" rel="noopener">third-party notices</a></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="editor" id="editor" hidden>
+    <textarea id="input" class="input-textarea" rows="1" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea>
+    <div class="editor-buttons">
+      <button type="button" class="ok-button" id="ok-button">OK</button>
+      <button type="button" class="ok-button" id="expand-button" title="insert X[1], X[2], ... under the line X of the caret">expand</button>
+    </div>
+  </div>
+
+  <canvas id="output" width="640" height="960" style="display:none"></canvas>
+  <div class="visualization" id="visualization"></div>
+
+  <footer class="footer">
+    <a href="https://github.com/koteitan/mt-swiper" target="_blank" rel="noopener">
+      <svg class="github-mark" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      mt-swiper v0.1.0
+    </a>
+  </footer>
+</body>
+</html>
