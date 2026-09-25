@@ -14,7 +14,7 @@ Every line of the text is one sequence, such as `(1,3,3)`, and gets its own imag
 
 - swipe right: append the largest term that keeps the sequence standard (the empty sequence becomes (1), and (1) becomes (1,L))
 - swipe left: delete the last term
-- swipe up: the last term becomes the next larger standard term; (1,v) becomes (1,v+1) and raises L with it
+- swipe up: the last term becomes the next larger standard term below (1,L+1); so (1,L) goes up only after `+`
 - swipe down: the last term becomes the next smaller standard term
 - the `- L +` buttons in the header: the level L. The swipes stay below (1,L+1). `-` turns a sequence at or above (1,L+1) into (1,L). Typing a sequence sets L to its second term.
 - double tap: the text box appears. Type sequences, one per line; the images follow while typing. The line of the caret is the focused image. OK closes the box.

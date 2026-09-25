@@ -75,9 +75,7 @@ var removeColumn=function (s){
 }
 var swipeUp=function (s){ //the next larger standard last term
   var w=Systems.nextLarger(sys,s,level);
-  if(w===null)return s;
-  if(s.length===2)level=Math.max(level,w); //(1,v) -> (1,v+1) raises the level with it
-  return s.slice(0,-1).concat([w]);
+  return w===null?s:s.slice(0,-1).concat([w]);
 }
 var swipeDown=function (s){ //the next smaller standard last term
   var w=Systems.nextSmaller(sys,s);

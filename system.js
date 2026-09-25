@@ -279,11 +279,9 @@ var nextSmaller=function (sys,s){
   var w=e[p.length];
   return w<s[s.length-1]?w:null;
 }
-//the smallest w > last with (s without last)+(w) standard and below (1,L+1), except
-//for the second term, which has no bound; null if none
+//the smallest w > last with (s without last)+(w) standard and below (1,L+1); null if none
 var nextLarger=function (sys,s,level){
   if(s.length<=1)return null;
-  if(s.length===2)return s[1]+1; //(1,v) -> (1,v+1), a seed, standard in every system; the level follows
   var p=s.slice(0,-1);
   var v=s[s.length-1];
   var w=largestNext(sys,p,level);
