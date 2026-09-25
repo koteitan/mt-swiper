@@ -382,7 +382,7 @@ var canvasColors=function (){
     bg:cssvar("--canvas-bg")||"#242628",
     fg:cssvar("--canvas-fg")||"#d4d4d4",
     sym:cssvar("--canvas-sym")||"#ff6b6b",
-    band:cssvar("--canvas-band")||"rgba(31,122,46,0.35)",
+    band:cssvar("--canvas-band")||"rgba(170,40,40,0.35)",
     divider:cssvar("--canvas-divider")||"#6b7177"
   };
 }
